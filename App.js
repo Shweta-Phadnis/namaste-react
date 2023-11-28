@@ -1,25 +1,57 @@
 import React from "react";
 import  ReactDOM  from "react-dom/client";
 
-//how to create tree/nested structure using react
-const parent = React.createElement(
-    "div",
-    {id : 'parent'},
-    React.createElement(
-        "div",
-        {id : 'child'},
-        [ //if we want to create sibling elements, we can use an array
-            React.createElement("h1",{},"Nested Tree"),
-            React.createElement("h2",{},"Nested Tree")
-        ]
+//Functional Component
+const ComponentInsideElement = () => {
+    return(
+        <>
+            <div>This is Component inside an element</div>
+        </>
     )
-);
+}
 
-const heading = React.createElement(
-    "h1",
-    {id : "heading1"},
-    "Hello World from React"
-);
+//React Element
+const whoHere = (
+    <div>
+        <ComponentInsideElement />
+        <h1>Who is here??</h1>
+    </div>
+)
+
+//React Element
+const title = (
+    <h1>
+        {/* Element inside element */}
+        {whoHere}
+        Shweta is here!!!
+    </h1>
+)
+
+//Functional Component
+const F1 = ()=> {
+    return(
+        <>
+        {title}
+        <div>This is f1</div>
+        </>
+    )
+}
+
+//Functional Component
+const F2 = () => {
+    return(
+        <>
+            <F1 />
+
+            {/* same thing!! */}
+            <F1></F1>
+
+            {/* F1 is just a normal JS function... so same thing */}
+            {F1()}
+            <div>This is f2</div>
+        </>
+    )
+}
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(heading)
+root.render(<F2 />)
