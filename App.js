@@ -1,3 +1,6 @@
+import React from "react";
+import  ReactDOM  from "react-dom/client";
+
 //how to create tree/nested structure using react
 const parent = React.createElement(
     "div",
@@ -17,5 +20,6 @@ const heading = React.createElement(
     {id : "heading1"},
     "Hello World from React"
 );
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(parent)
+root.render(heading)
